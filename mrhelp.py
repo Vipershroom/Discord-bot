@@ -8,7 +8,7 @@ bot = discord.Bot()
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
-testing_servers = [684237072827154435]
+testing_servers = [684237072827154435, 920013664604553246]
 
 # Welcome message for when the bot comes online      
 @bot.event
