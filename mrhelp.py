@@ -31,7 +31,7 @@ async def on_message(message):
     channel = str(message.channel.name)
     print(f"{username}: {user_message} ({channel})")
     
-    # randomm commands
+    # random command
     if user_message.lower() == "$random":
         response = f"This is your random number, {random.randint(1, 1000)}"
         await message.channel.send(response)
@@ -40,6 +40,12 @@ async def on_message(message):
     elif user_message.lower() == "$hello": 
         await message.channel.send(f"Hello, {username}")
         return
+    # echo command
+    elif user_message.startswith("$echo"):
+        echoc = user_message.replace("$echo", "")
+        await message.channel.send(f"**echo**{echoc}")
+        return
+
 
 # slash commands
 @bot.slash_command(guild_ids=testing_servers)
