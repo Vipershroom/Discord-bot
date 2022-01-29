@@ -20,10 +20,13 @@ async def on_ready():
 # Filters out messages that don't start with the $ sign
 @bot.event
 async def on_message(message):
-    if message.author == bot.user:
-        return
-    elif message.content[0] != "$":
-        return
+    try:
+        if message.author == bot.user:
+            return
+        elif message.content[0] != "$":
+            return
+    except:
+        return "Their was an error handling the message"
     
     # Initializes the user who sent the message along with grabbing message content
     username = str(message.author).split("#")[0]
