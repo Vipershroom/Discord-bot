@@ -69,7 +69,8 @@ async def hello(ctx):
     return
  
 @bot.slash_command(guild_ids=testing_servers)
-async def no(ctx):
-    await ctx.respond("No, lol")
+async def random_num(ctx):
+    response = f"This is your random number, {random.randint(1, 1000)}"
+    await ctx.respond(response)
     
 bot.run(TOKEN)
