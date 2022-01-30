@@ -63,12 +63,12 @@ $echo Echo
 
 
 # slash commands
-@bot.slash_command(guild_ids=testing_servers)
+@bot.slash_command(guild_ids=testing_servers, name="hello", description="Says hello")
 async def hello(ctx):
     await ctx.respond("Hello!")
     return
  
-@bot.slash_command(guild_ids=testing_servers)
+@bot.slash_command(guild_ids=testing_servers, name="random", description="Generates a random number")
 async def random_num(ctx):
     response = f"This is your random number, {random.randint(1, 1000)}"
     await ctx.respond(response)
