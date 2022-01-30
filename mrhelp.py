@@ -52,12 +52,9 @@ $echo Echo
     await ctx.send(response)
     
 @bot.command()
-async def echo(ctx, *message):
-    if message == ():
-        await ctx.send("Give me something")
-    else:
-        message = str(message)[2:-3]
-        await ctx.send(message)
+async def echo(ctx, message):
+    message = str(message)[2:-3]
+    await ctx.send(message)
     
     
     
@@ -71,39 +68,46 @@ async def hello(ctx):
     await ctx.send("Hello!")
     
 @bot.command(aliases=['8ball'])
-async def _8ball(ctx, *message):
-    if message == ():
-        await ctx.send("8ball needs a question!")
-    else:
-        # 8ball responses
-        responses = [
-            "It is certain.",
-            "It is decidedly so.",
-            "Without a doubt.",
-            "Yes definitely.",
-            "You may rely on it.",
-            "As I see it, yes.",
-            "Most likely.",
-            "Outlook good.",
-            "Yes.",
-            "Signs point to yes.",
-            "Reply hazy, try again.",
-            "Ask again later.",
-            "Better not tell you now.",
-            "Cannot predict now.",
-            "Concentrate and ask again.",
-            "Don't count on it.",
-            "My reply is no.",
-            "My sources say no.",
-            "Outlook not so good.",
-            "Very doubtful.",
-            ]
-        # picks a random response from the list and sends to user
-        random.shuffle(responses)
-        randomitem = responses[random.randrange(0, len(responses))]
-        await ctx.send(randomitem)
- 
+async def _8ball(ctx, message):
+    # 8ball responses
+    responses = [
+        "It is certain.",
+        "It is decidedly so.",
+        "Without a doubt.",
+        "Yes definitely.",
+        "You may rely on it.",
+        "As I see it, yes.",
+        "Most likely.",
+        "Outlook good.",
+        "Yes.",
+        "Signs point to yes.",
+        "Reply hazy, try again.",
+        "Ask again later.",
+        "Better not tell you now.",
+        "Cannot predict now.",
+        "Concentrate and ask again.",
+        "Don't count on it.",
+        "My reply is no.",
+        "My sources say no.",
+        "Outlook not so good.",
+        "Very doubtful.",
+        ]
+    # picks a random response from the list and sends to user
+    random.shuffle(responses)
+    randomitem = responses[random.randrange(0, len(responses))]
+    await ctx.send(randomitem)
+        
+@bot.command()
+async def spinbottle(ctx):
+    pass
 
+@_8ball.error
+async def _8ball_error(ctx,error):
+    await ctx.send("8Ball needs a question")
+    
+@echo.error
+async def echo_error(ctx, error):
+    await ctx.send("Nothing to echo :(")
 
 # slash commands
 @bot.slash_command(guild_ids=testing_servers, name="hello", description="Says hello")
