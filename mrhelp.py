@@ -59,7 +59,7 @@ $echo Echo
     # echo command
     elif user_message.startswith(f"{prefix}echo"):
         echoc = user_message.replace("$echo", "")
-        await message.channel.send(f"**echo**{echoc}")
+        await message.channel.send(f"{echoc}")
         return
 
 
