@@ -9,6 +9,15 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 testing_servers = [684237072827154435, 920013664604553246]
 prefix = "$"
+global cmdList 
+cmdList = """
+```
+help Displays all commands
+$random Gives you a random number
+$hello Gives you a hello
+$echo Echo
+```
+"""
 
 bot = commands.Bot(command_prefix=prefix)
 bot.remove_command("help")
@@ -41,14 +50,7 @@ async def on_message(message):
     
 @bot.command(aliases=['help'])
 async def helpcommand(ctx):
-    response =  """
-```
-help Displays all commands
-$random Gives you a random number
-$hello Gives you a hello
-$echo Echo
-```
-"""
+    response =  cmdList
     await ctx.send(response)
     
 @bot.command()
@@ -122,14 +124,7 @@ async def random_num(ctx):
 
 @bot.slash_command(guild_ids=testing_servers, name="help", description="Displays all $ commands")
 async def help(ctx):
-    response = """
-```
-$help Displays all commands
-$random Gives you a random number
-$hello Gives you a hello
-$echo Echo
-```
-"""
+    response = cmdList
     await ctx.respond(response)
 
 @bot.slash_command(guild_ids=testing_servers, name="echo", description="Echos the displayed message")
