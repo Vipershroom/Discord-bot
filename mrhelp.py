@@ -19,33 +19,6 @@ async def on_ready():
     for server in bot.guilds:
         print(server)
 
-
-    
-@bot.command(aliases=['help'])
-async def helpcommand(ctx):
-    response =  """
-```
-help Displays all commands
-$random Gives you a random number
-$hello Gives you a hello
-$echo Echo
-```
-"""
-    await ctx.send(response)
-    
-@bot.command()
-async def echo(ctx, arg):
-    await ctx.send(arg)
-    
-@bot.command(aliases=['random'])
-async def randomnum(ctx):
-    response = f"This is your random number, {random.randint(1, 1000)}"
-    await ctx.send(response)
-    
-@bot.command()
-async def hello(ctx):
-    await ctx.send("Hello!")
- 
 # Filters out messages that don't start with the $ sign
 @bot.event
 async def on_message(message):
@@ -63,6 +36,39 @@ async def on_message(message):
     channel = str(message.channel.name)
     print(f"{username}: {user_message} ({channel})")
     await bot.process_commands(message)
+    
+@bot.command(aliases=['help'])
+async def helpcommand(ctx):
+    response =  """
+```
+help Displays all commands
+$random Gives you a random number
+$hello Gives you a hello
+$echo Echo
+```
+"""
+    await ctx.send(response)
+    
+@bot.command()
+async def echo(ctx, *arg):
+    if arg == ():
+        await ctx.send("Give me something")
+    else:
+        message = str(arg)[2:-3]
+        await ctx.send(message)
+    
+    
+    
+@bot.command(aliases=['random'])
+async def randomnum(ctx):
+    response = f"This is your random number, {random.randint(1, 1000)}"
+    await ctx.send(response)
+    
+@bot.command()
+async def hello(ctx):
+    await ctx.send("Hello!")
+ 
+
 
 
 
