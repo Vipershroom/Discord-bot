@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
@@ -16,6 +17,7 @@ bot.remove_command("help")
 @bot.event
 async def on_ready():
     print(f"{bot.user} Has logged on")
+    await bot.change_presence(activity=discord.Game("Foobar"))
     for server in bot.guilds:
         print(server)
 
