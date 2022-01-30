@@ -161,6 +161,6 @@ async def eightball(ctx, message):
         # picks a random response from the list and sends to user
         random.shuffle(responses)
         randomitem = responses[random.randrange(0, len(responses))]
-        await ctx.respond(f"(Original message: {msg}) {randomitem}")
+        await ctx.respond(randomitem)
     
 bot.run(TOKEN)
