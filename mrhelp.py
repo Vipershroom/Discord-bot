@@ -88,5 +88,9 @@ $echo Echo
 ```
 """
     await ctx.respond(response)
+
+@bot.slash_command(guild_ids=testing_servers, name="echo", description="Echos the displayed message")
+async def echo(ctx, arg):
+    await ctx.respond(arg)
     
 bot.run(TOKEN)
