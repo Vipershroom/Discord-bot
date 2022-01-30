@@ -16,6 +16,7 @@ help Displays all commands
 $random Gives you a random number
 $hello Gives you a hello
 $echo Echo
+$8ball Ask the magic 8ball
 ```
 """
 
