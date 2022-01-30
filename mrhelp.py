@@ -70,8 +70,6 @@ async def hello(ctx):
  
 
 
-
-
 # slash commands
 @bot.slash_command(guild_ids=testing_servers, name="hello", description="Says hello")
 async def hello(ctx):
