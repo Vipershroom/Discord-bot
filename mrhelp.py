@@ -34,8 +34,20 @@ async def on_message(message):
     channel = str(message.channel.name)
     print(f"{username}: {user_message} ({channel})")
     
+    #help command
+    if user_message.lower() == "$help":
+        response = """
+```
+$help Displays all commands
+$random Gives you a random number
+$hello Gives you a hello
+$echo Echo
+```
+"""
+        await message.channel.send(response)
+        return
     # random command
-    if user_message.lower() == "$random":
+    elif user_message.lower() == "$random":
         response = f"This is your random number, {random.randint(1, 1000)}"
         await message.channel.send(response)
         return
