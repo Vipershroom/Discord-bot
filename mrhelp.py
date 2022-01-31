@@ -56,7 +56,7 @@ async def helpcommand(ctx):
     
 @bot.command()
 async def echo(ctx, message):
-    message = str(message)[2:-3]
+    message = str(message)
     await ctx.send(message)
     
     
