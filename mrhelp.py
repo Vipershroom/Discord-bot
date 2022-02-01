@@ -8,6 +8,7 @@ from discord.utils import get
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
+intents = discord.Intents.all()
 testing_servers = [684237072827154435, 920013664604553246]
 server_ids = []
 prefix = "$"
@@ -23,7 +24,7 @@ $pen Displays your pen size
 ```
 """
 
-bot = commands.Bot(command_prefix=prefix)
+bot = commands.Bot(command_prefix=prefix, intents = intents)
 bot.remove_command("help")
 
 # Welcome message for when the bot comes online      
@@ -114,7 +115,7 @@ async def pen(ctx, *arg):
 @bot.command()
 async def spinbottle(ctx):
     user = random.choice(ctx.channel.guild.members)
-    print(user)
+    await ctx.send(f"The bottle lands on {user.mention}")
 
 @_8ball.error
 async def _8ball_error(ctx,error):
