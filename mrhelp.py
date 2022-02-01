@@ -99,7 +99,13 @@ async def _8ball(ctx, message):
     random.shuffle(responses)
     randomitem = responses[random.randrange(0, len(responses))]
     await ctx.send(randomitem)
-        
+
+
+@bot.command()
+async def pen(ctx, *arg):
+    pickle = random.randint(1,12)
+    await ctx.send(f"Your pen size is {pickle} inches")
+
 @bot.command()
 async def spinbottle(ctx):
     pass
