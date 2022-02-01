@@ -168,5 +168,10 @@ async def eightball(ctx, message):
         random.shuffle(responses)
         randomitem = responses[random.randrange(0, len(responses))]
         await ctx.respond(randomitem)
+
+@bot.slash_command(guild_ids=testing_servers, description="Displays your pen size")
+async def pen(ctx):
+    pickle = random.randint(1,12)
+    await ctx.respond(f"Your pen size is {pickle} inches")
     
 bot.run(TOKEN)
