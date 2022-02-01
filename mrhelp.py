@@ -3,11 +3,13 @@ from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import random
+from discord.utils import get
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 testing_servers = [684237072827154435, 920013664604553246]
+server_ids = []
 prefix = "$"
 global cmdList 
 cmdList = """
@@ -31,6 +33,8 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game("Foobar"))
     for server in bot.guilds:
         print(server)
+        server_ids.append(server.id)
+    print(server_ids)
 
 # Filters out messages that don't start with the $ sign
 @bot.event
@@ -109,7 +113,8 @@ async def pen(ctx, *arg):
 
 @bot.command()
 async def spinbottle(ctx):
-    pass
+    user = random.choice(ctx.channel.guild.members)
+    print(user)
 
 @_8ball.error
 async def _8ball_error(ctx,error):
