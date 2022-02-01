@@ -114,7 +114,15 @@ async def pen(ctx, *arg):
 
 @bot.command()
 async def spinbottle(ctx):
-    user = random.choice(ctx.channel.guild.members)
+    # Im not using list comprehension shut up
+    memberlist = []
+    guild = ctx.guild
+    for member in guild.members:
+        if member.bot:
+            continue
+        print(member)
+        memberlist.append(member)
+    user = random.choice(memberlist)
     await ctx.send(f"The bottle lands on {user.mention}")
 
 @_8ball.error
