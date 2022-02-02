@@ -17,6 +17,7 @@ prefix = "$"
 global cmdList 
 cmdList = """
 ```
+----------------------------------------------------
 help Displays all commands
 $random Gives you a random number
 $hello Gives you a hello
@@ -26,6 +27,11 @@ $pen Displays your pen size
 $spinbottle spin the bottle, who will it land on?
 $avatar Displays the avatar of anyone mentioned
 $throw throw something at someone
+$rps Play rock paper scissors!
+---------------------------------------------------
+Moderation:
+$kick Kicks a user
+$ban Bans a user
 ```
 """
 
@@ -211,8 +217,15 @@ async def baka():
     pass
 
 @bot.command()
-async def slap():
-    pass
+async def slap(ctx, member : discord.Member=None):
+    if member == ctx.author:
+        await ctx.send("You can't slap yourself :anger: ")
+        return
+    elif member == None:
+        await ctx.send("You need a person to slap! :anger: ")
+        return
+    user = member.id
+    await ctx.send(f"You slapped :wave: {member.mention}")
 
 @bot.command(aliases=["16ball"])
 async def _16ball():
