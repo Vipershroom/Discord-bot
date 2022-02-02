@@ -168,7 +168,43 @@ async def github(ctx):
 
 @bot.command()
 async def rps(ctx, play):
-    pass
+    botPossiblePlays = ['rock', 'paper', 'scissors']
+    botCurrentPlay = random.choice(botPossiblePlays)
+
+    # Rock
+    if play.lower() == botPossiblePlays[0] and botCurrentPlay == botPossiblePlays[1]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("I win, nice try!")
+    elif play.lower() == botPossiblePlays[0] and botCurrentPlay == botPossiblePlays[2]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("I lose, good game!")
+    elif play.lower() == botPossiblePlays[0] and botCurrentPlay == botPossiblePlays[0]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("We got the same, Its a draw!")
+
+    # Paper
+    elif play.lower() == botPossiblePlays[1] and botCurrentPlay == botPossiblePlays[0]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("I lose, good game!")
+    elif play.lower() == botPossiblePlays[1] and botCurrentPlay == botPossiblePlays[1]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("We got the same, Its a draw!")
+    elif play.lower() == botPossiblePlays[1] and botCurrentPlay == botPossiblePlays[2]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("I win, nice try!")
+
+    # Scissor
+    elif play.lower() == botPossiblePlays[2] or "scissor" and botCurrentPlay == botPossiblePlays[0]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("I win, nice try!")
+    elif play.lower() == botPossiblePlays[2] and botCurrentPlay == botPossiblePlays[1]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("I lose, good game!")
+    elif play.lower() == botPossiblePlays[2] and botCurrentPlay == botPossiblePlays[2]:
+        await ctx.send(f"I choose {botCurrentPlay}")
+        await ctx.send("We got the same, Its a draw!")
+    else:
+        await ctx.send("Give me a valid hand!")
 
 @bot.command()
 async def baka():
@@ -209,13 +245,16 @@ async def ban(ctx, member : discord.Member=None,*, reason=None):
     await ctx.guild.ban(member)
     await ctx.send(f"User {member} banned for {reason}")
 
+@rps.error
+async def rps_error(ctx, error):
+    await ctx.send("You need to play a hand")
 
 @kick.error
-async def kick(ctx,error):
+async def kick_error(ctx,error):
     await ctx.send("You don't have the permissions for this command")
 
 @ban.error
-async def kick(ctx,error):
+async def ban_error(ctx,error):
     await ctx.send("You don't have the permissions for this command")
 
 @_8ball.error
