@@ -130,6 +130,30 @@ async def ship(ctx, *,  avamember : discord.Member=None):
     userAvatar = avamember.avatar_url
     await ctx.send(userAvatar)
 
+@bot.command()
+async def throw():
+    pass
+
+@bot.command()
+async def github():
+    pass
+
+@bot.command()
+async def rps():
+    pass
+
+@bot.command()
+async def baka():
+    pass
+
+@bot.command()
+async def slap():
+    pass
+
+@bot.command(aliases=["16ball"])
+async def _16ball():
+    pass
+
 @_8ball.error
 async def _8ball_error(ctx,error):
     await ctx.send("8Ball needs a question")
