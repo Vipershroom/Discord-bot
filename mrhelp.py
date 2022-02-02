@@ -124,6 +124,11 @@ async def spinbottle(ctx):
         memberlist.append(member)
     user = random.choice(memberlist)
     await ctx.send(f"The bottle lands on {user.mention}")
+    
+@bot.command()
+async def ship(ctx, *,  avamember : discord.Member=None):
+    userAvatar = avamember.avatar_url
+    await ctx.send(userAvatar)
 
 @_8ball.error
 async def _8ball_error(ctx,error):
