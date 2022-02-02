@@ -154,10 +154,10 @@ async def throw(ctx, member : discord.Member=None):
         f"You threw a :blue_car: at <@!{trimMember}>. They're fucking dead :skull: ",
         f"You threw a :boot: at <@!{trimMember}>. How could you?!",
         f"You threw a :bagel: at <@!{trimMember}>. Not the plain bagel!",
-        f"You threw a :8ball: at <@!{trimMember}>. 8Ball IS NOT PLEASED!"
-        f"You threw a :violin: at <@!{trimMember}>. I guess you could say that was violent!"
-        f"You threw a :salt: at <@!{trimMember}>. You must be pretty salty"
-        f"You threw a :tada: at <@!{trimMember}>. Happy birthday!"
+        f"You threw a :8ball: at <@!{trimMember}>. 8Ball IS NOT PLEASED!",
+        f"You threw a :violin: at <@!{trimMember}>. I guess you could say that was violent!",
+        f"You threw a :salt: at <@!{trimMember}>. You must be pretty salty",
+        f"You threw a :tada: at <@!{trimMember}>. Happy birthday!",
     ]
     random.shuffle(responses)
     throwItem = random.randrange(0, len(responses))
