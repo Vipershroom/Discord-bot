@@ -126,9 +126,11 @@ async def spinbottle(ctx):
     await ctx.send(f"The bottle lands on {user.mention}")
     
 @bot.command()
-async def ship(ctx, *,  avamember : discord.Member=None):
-    userAvatar = avamember.avatar_url
-    await ctx.send(userAvatar)
+async def avatar(ctx, avamember : discord.Member=None):
+    userAvatar = avamember.display_avatar
+    Embed = discord.Embed(title=f"{avamember.name}'s Avatar")
+    Embed.set_image(url = userAvatar)
+    await ctx.send(embed = Embed)
 
 @bot.command()
 async def throw():
