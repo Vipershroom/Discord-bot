@@ -1,3 +1,4 @@
+import re
 import discord
 from discord.ext import commands
 import os
@@ -135,8 +136,17 @@ async def avatar(ctx, avamember : discord.Member=None):
     await ctx.send(embed = Embed)
 
 @bot.command()
-async def throw():
-    pass
+async def throw(ctx, member : discord.Member=None):
+    trimMember = member.id
+    responses = [
+        f"You threw an :eggplant: at <@!{trimMember}>. Nice one",
+        f"You threw a :blue_car: at <@!{trimMember}>. They're fucking dead :skull: ",
+        f"You threw a :boot: at <@!{trimMember}>. How could you?!",
+        f"You threw a :bagel: at <@!{trimMember}>. Not the plain bagel!",
+    ]
+    random.shuffle(responses)
+    throwItem = random.randrange(0, len(responses))
+    await ctx.send(responses[throwItem])
 
 @bot.command()
 async def github():
