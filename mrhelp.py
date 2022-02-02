@@ -164,8 +164,8 @@ async def throw(ctx, member : discord.Member=None):
     await ctx.send(responses[throwItem])
 
 @bot.command()
-async def github():
-    pass
+async def github(ctx):
+    await ctx.send("Heres the link to the github repository \nhttps://github.com/Vipershroom/mr-help")
 
 @bot.command()
 async def rps():
