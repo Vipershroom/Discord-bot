@@ -125,7 +125,6 @@ async def spinbottle(ctx):
     for member in guild.members:
         if member.bot:
             continue
-        print(member)
         memberlist.append(member)
     user = random.choice(memberlist)
     await ctx.send(f"The bottle lands on {user.mention}")
