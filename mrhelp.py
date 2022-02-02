@@ -22,6 +22,9 @@ $hello Gives you a hello
 $echo Echo
 $8ball Ask the magic 8ball
 $pen Displays your pen size
+$spinbottle spin the bottle, who will it land on?
+$avatar Displays the avatar of anyone mentioned
+$throw throw something at someone
 ```
 """
 
