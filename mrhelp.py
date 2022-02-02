@@ -167,7 +167,7 @@ async def github(ctx):
     await ctx.send("Heres the link to the github repository \nhttps://github.com/Vipershroom/mr-help")
 
 @bot.command()
-async def rps():
+async def rps(ctx, play):
     pass
 
 @bot.command()
@@ -181,6 +181,42 @@ async def slap():
 @bot.command(aliases=["16ball"])
 async def _16ball():
     pass
+
+@bot.command()
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, member : discord.Member=None,*, reason=None):
+    if reason == None:
+        reason = "No reason provided"
+    elif member == None:
+        await ctx.send("Please provide a member to kick")
+        return
+    await ctx.guild.kick(member)
+    await ctx.send(f"User {member} kicked for {reason}")
+    
+
+@bot.command()
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, member : discord.Member=None,*, reason=None):
+    if reason == None:
+        reason = "No reason provided"
+    elif member == None:
+        await ctx.send("Please provide a member to kick")
+        return
+    elif member == ctx.author:
+        await ctx.guild.ban(member)
+        await ctx.send(f"User {member} banned for {reason}. LOLOLOLOL")
+        return
+    await ctx.guild.ban(member)
+    await ctx.send(f"User {member} banned for {reason}")
+
+
+@kick.error
+async def kick(ctx,error):
+    await ctx.send("You don't have the permissions for this command")
+
+@ban.error
+async def kick(ctx,error):
+    await ctx.send("You don't have the permissions for this command")
 
 @_8ball.error
 async def _8ball_error(ctx,error):
