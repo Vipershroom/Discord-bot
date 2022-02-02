@@ -127,6 +127,8 @@ async def spinbottle(ctx):
     
 @bot.command()
 async def avatar(ctx, avamember : discord.Member=None):
+    if avamember == None:
+        avamember = ctx.author
     userAvatar = avamember.display_avatar
     Embed = discord.Embed(title=f"{avamember.name}'s Avatar")
     Embed.set_image(url = userAvatar)
