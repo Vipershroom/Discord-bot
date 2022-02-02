@@ -137,6 +137,13 @@ async def avatar(ctx, avamember : discord.Member=None):
 
 @bot.command()
 async def throw(ctx, member : discord.Member=None):
+    if member == ctx.author:
+        await ctx.send("You can't throw things at yourself :anger: ")
+        return
+    elif member == None:
+        await ctx.send("You need a person to throw things at :anger: ")
+        return
+        
     trimMember = member.id
     responses = [
         f"You threw an :eggplant: at <@!{trimMember}>. Nice one",
