@@ -213,8 +213,11 @@ async def rps(ctx, play):
         await ctx.send("Give me a valid hand!")
 
 @bot.command()
-async def baka():
-    pass
+async def what(ctx):
+    img = "https://cdn.discordapp.com/attachments/535649530750959616/938783555838951424/IMG_3578.jpg"
+    embedImg = discord.Embed()
+    embedImg.set_image(url=img)
+    await ctx.send(embed = embedImg)
 
 @bot.command()
 async def slap(ctx, member : discord.Member=None):
@@ -228,8 +231,16 @@ async def slap(ctx, member : discord.Member=None):
     await ctx.send(f"You slapped :wave: {member.mention}")
 
 @bot.command(aliases=["16ball"])
-async def _16ball():
-    pass
+async def _16ball(ctx, *,message=None):
+    # Im not using list comprehension shut up
+    memberlist = []
+    guild = ctx.guild
+    for member in guild.members:
+        if member.bot:
+            continue
+        memberlist.append(member)
+    user = random.choice(memberlist)
+    await ctx.send(f"{user.mention}")
 
 @bot.command()
 @commands.has_permissions(kick_members=True)
@@ -273,6 +284,10 @@ async def ban_error(ctx,error):
 @_8ball.error
 async def _8ball_error(ctx,error):
     await ctx.send("8Ball needs a question")
+
+@_16ball.error
+async def _16ball_error(ctx, error):
+    await ctx.send("16Ball needs a question!")
     
 @echo.error
 async def echo_error(ctx, error):
