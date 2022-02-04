@@ -1,11 +1,9 @@
-import re
 import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import random
 from discord.utils import get
-from numpy import true_divide
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
